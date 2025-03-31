@@ -110,13 +110,10 @@ string Curso::getNombre() const {
 ostream& operator<<(ostream& os, const Curso& curso) {
     vector<Estudiante*> estudiantesOrdenados = curso.estudiantes;
     
-    for (int i = 0; i < estudiantesOrdenados.size(); i++) {
-        for (int j = i + 1; j < estudiantesOrdenados.size(); j++) {
-            if (estudiantesOrdenados[i]->getNombre() > estudiantesOrdenados[j]->getNombre()) {
-                swap(estudiantesOrdenados[i], estudiantesOrdenados[j]);
-            }
-        }
-    }
+    // Ordenar estudiantes alfabéticamente por nombre
+    sort(estudiantesOrdenados.begin(), estudiantesOrdenados.end(), [](Estudiante* a, Estudiante* b) {
+        return a->getNombre() < b->getNombre();
+    });
 
     os << "Curso: " << curso.getNombre() << endl;
     os << "Lista de estudiantes (orden alfabético):" << endl;
