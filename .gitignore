@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Carpetas de configuración de IDEs
+.vscode/
+
+# Carpetas de build (opcional)
+build/

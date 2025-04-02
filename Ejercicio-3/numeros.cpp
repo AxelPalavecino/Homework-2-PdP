@@ -513,6 +513,7 @@ void probarReales() {
  * @brief Función para probar operaciones con números complejos
  */
 void probarComplejos() {
+    std::cout << "\n========================================" << std::endl;
     std::cout << "\nPRUEBA DE NÚMEROS COMPLEJOS" << std::endl;
     std::cout << "========================================" << std::endl;
     
@@ -632,6 +633,7 @@ void probarComplejos() {
  * @brief Función para probar operaciones con tipos incompatibles
  */
 void probarTiposIncompatibles() {
+    std::cout << "========================================" << std::endl;
     std::cout << "\nPRUEBA DE OPERACIONES CON TIPOS INCOMPATIBLES" << std::endl;
     std::cout << "========================================" << std::endl;
     
@@ -713,6 +715,7 @@ void probarTiposIncompatibles() {
  * @brief Función para probar operaciones mezcladas entre diferentes tipos
  */
 void probarOperacionesMezcladas() {
+    std::cout << "========================================" << std::endl;
     std::cout << "\nPRUEBA DE OPERACIONES MEZCLADAS ENTRE TIPOS" << std::endl;
     std::cout << "========================================" << std::endl;
     
