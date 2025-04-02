@@ -59,9 +59,6 @@ La clase `Reloj` encapsula la lógica de un reloj digital con formato de 12 y 24
 # Compilación estándar con optimizaciones
 g++ main.cpp reloj.cpp -O2 -Wall -Wextra -std=c++20 -o reloj
 
-# Compilación para depuración
-g++ main.cpp reloj.cpp -g -DDEBUG -std=c++20 -o reloj_debug
-
 # Verificación de fugas de memoria
 valgrind --leak-check=full --show-leak-kinds=all ./reloj
 ```
@@ -109,11 +106,8 @@ Este sistema demuestra la implementación de una relación de asociación entre 
 # Build de producción
 g++ -Wall -Werror -std=c++20 main.cpp curso.cpp -o gestion_cursos
 
-# Build con sanitizers
-g++ -fsanitize=address -g main.cpp curso.cpp -std=c++20 -o gestion_cursos_safe
-
-# Ejecución con análisis de rendimiento
-time ./gestion_cursos
+# Ejecución con Valgrind para detección de fugas
+valgrind --leak-check=full --track-origins=yes ./gestion_cursos
 ```
 
 ### Estructura de Archivos
@@ -166,8 +160,8 @@ Sistema de tipos numéricos basado en una jerarquía de polimorfismo para repres
 # Compilación estándar
 g++ -Wall -pedantic main.cpp numeros.cpp -std=c++20 -o numeros
 
-# Ejecución con depuración de excepciones
-gdb -ex "catch throw" -ex run --args ./numeros
+# Ejecución con Valgrind para detección de fugas
+valgrind --leak-check=full --track-origins=yes ./numeros
 ```
 
 ### Ficheros

@@ -38,7 +38,7 @@ Curso::Curso(const Curso& otro) : nombre(otro.nombre) {
      * independientemente de los cursos y pueden pertenecer a múltiples cursos.
      * No queremos duplicar los objetos estudiante, solo las referencias a ellos.
      */
-    for (int i = 0; i < otro.estudiantes.size(); i++) {
+    for (size_t i = 0; i < otro.estudiantes.size(); i++) {
         estudiantes.push_back(otro.estudiantes[i]);
     }
 
@@ -99,7 +99,7 @@ bool Curso::estaInscrito(int legajo) const {
 }
 
 bool Curso::estaCompleto() const {
-    return estudiantes.size() >= capacidadMaxima;
+    return estudiantes.size() >= static_cast<size_t>(capacidadMaxima);
 }
 
 string Curso::getNombre() const {
