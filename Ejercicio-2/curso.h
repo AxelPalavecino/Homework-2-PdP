@@ -2,12 +2,39 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
+#include <map> // Almacenar par clave-valor
 #include <algorithm>
 
 using namespace std;
 
-class Curso;
+// FUNCIONES Y DEFINICIONES ADICIONALES
+
+// Enum para las opciones del menú
+enum OpcionMenu {
+    REGISTRAR_ESTUDIANTE = 1,
+    CREAR_CURSO,
+    INSCRIBIR_ESTUDIANTE,
+    DESINSCRIBIR_ESTUDIANTE,
+    VERIFICAR_INSCRIPCION,
+    VERIFICAR_CURSO_COMPLETO,
+    MOSTRAR_ESTUDIANTES,
+    ASIGNAR_NOTA,
+    COPIAR_CURSO,
+    SALIR
+};
+
+/**
+ * @brief Función para limpiar la pantalla (multiplataforma)
+ */
+void limpiarPantalla();
+
+/**
+ * @brief Función que gestiona la interacción del usuario con el sistema
+ * @return Código de salida del programa
+ */
+int interaccion();
+
+// CLASES SOLICITADAS
 
 /**
  * @class Estudiante
@@ -118,7 +145,7 @@ public:
      */
     string getNombre() const;
 
-    // Declaración de la función amiga
+    // Declaración de la función friend
     friend ostream& operator<<(ostream& os, const Curso& curso);
 };
 
@@ -128,4 +155,4 @@ public:
  * @param curso Curso cuyos estudiantes se imprimirán
  * @return Referencia al stream modificado
  */
-ostream& operator<<(ostream& os, const Curso& curso);
+ostream& operator<<(ostream& os, const Curso& curso); 

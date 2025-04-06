@@ -325,9 +325,7 @@ std::string Complejo::toString() const {
     return ss.str();
 }
 
-//==============================================
 // FUNCIONES DE PRUEBA
-//==============================================
 
 /**
  * @brief Función para probar operaciones con números enteros

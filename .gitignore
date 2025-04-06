@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+# Executables específicos sin extensión
+main
+a.out
+
+# Binarios generados en carpetas build
+build/
+bin/
+
+# No ignorar archivos README
+!README
+!README.md
+!README.txt

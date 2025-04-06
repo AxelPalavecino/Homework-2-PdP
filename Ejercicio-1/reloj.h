@@ -36,13 +36,19 @@ unsigned int obtenerValorEntero(const string& mensaje, unsigned int min, unsigne
  */
 bool obtenerRespuestaSiNo(const string& mensaje);
 
+/**
+ * Función principal de interacción con el usuario
+ * Muestra el menú y gestiona las operaciones con un reloj
+ */
+void interaccion();
+
 class Reloj {
     // Atributos privados
     private:
         unsigned int hora; // El unsigned int es para que no se pueda ingresar un valor negativo
         unsigned int minuto;
         unsigned int segundo;
-        bool pm; // true = pm, false = am
+        bool pm; // PM = True, AM = False
 
     public:
         // Métodos públicos

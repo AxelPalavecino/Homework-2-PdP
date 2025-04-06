@@ -6,6 +6,7 @@ void ejecutarPruebas();
 
 int main() {
     try {
+        std::cout << "========================================" << std::endl;
         std::cout << "INICIANDO PRUEBAS DE OPERACIONES CON NÚMEROS" << std::endl;
         std::cout << "========================================" << std::endl;
         
