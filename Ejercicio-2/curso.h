@@ -44,9 +44,7 @@ class Estudiante {
 private:
     string nombreCompleto;
     int legajo;
-    map<string, float> cursosNotas; // map es una estructura de datos que almacena pares clave-valor, 
-                                    // donde la clave es el nombre del curso y el valor es la nota
-                                    // del estudiante en ese curso, tal como un diccionario.
+    map<string, vector<float>> cursosNotas; // Cambiado a vector de notas por curso
 
 public:
     /**
@@ -155,4 +153,4 @@ public:
  * @param curso Curso cuyos estudiantes se imprimirán
  * @return Referencia al stream modificado
  */
-ostream& operator<<(ostream& os, const Curso& curso); 
+ostream& operator<<(ostream& os, const Curso& curso);

@@ -169,14 +169,16 @@ class Estudiante {
 private:
     string nombreCompleto;
     int legajo;
-    map<string, float> cursosNotas;
+    map<string, vector<float>> cursosNotas; // Almacena vectores de notas por curso
     // ...
 };
 ```
 
 **Características:**
-- Almacenamiento eficiente de calificaciones mediante `std::map<string, float>`
-- Cálculo de promedios con validación
+- Almacenamiento eficiente de múltiples calificaciones mediante `std::map<string, vector<float>>`
+- Posibilidad de registrar varias notas para un mismo curso
+- Cálculo de promedios considerando todas las notas de todos los cursos
+- Persistencia de calificaciones incluso después de desinscribirse de un curso
 - Identificación única mediante legajo
 
 #### 2. Clase `Curso`
@@ -248,6 +250,25 @@ El programa implementa gestión correcta de memoria:
 - Constructor de copia para duplicar cursos
 - Destructor que limpia adecuadamente los recursos
 - Liberación de todos los objetos al finalizar
+
+### Manejo de Calificaciones
+
+El sistema implementa un manejo robusto de calificaciones con las siguientes características:
+
+1. **Almacenamiento múltiple de notas:**
+   - Cada curso puede tener múltiples calificaciones para un estudiante
+   - Se utiliza un vector de notas para cada curso (`map<string, vector<float>>`)
+   - El promedio se calcula sobre todas las notas de todos los cursos
+
+2. **Persistencia de calificaciones:**
+   - Cuando un estudiante se desinscribe de un curso, sus calificaciones se mantienen
+   - Esto refleja el comportamiento real de sistemas académicos donde el historial se preserva
+   - Las notas siguen contando para el promedio general del estudiante
+   - Este comportamiento permite mantener un registro académico completo y preciso
+
+3. **Asignación de múltiples notas:**
+   - Cada vez que se asigna una nota, se agrega al vector de calificaciones del curso
+   - Esto permite registrar parciales, exámenes y otras evaluaciones para el mismo curso
 
 ### Compilación y Ejecución
 
@@ -656,3 +677,4 @@ valgrind --tool=memcheck --show-reachable=yes --leak-check=full ./banco
 
 - **main.cpp**: Programa principal
   - Inicialización del sistema de prueba
+````

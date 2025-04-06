@@ -12,7 +12,16 @@ int Estudiante::getLegajo() const {
 }
 
 void Estudiante::agregarCursoNota(const string& nombreCurso, float nota) {
-    cursosNotas[nombreCurso] = nota;
+    // Simplemente agregar la nota al vector de notas para este curso
+    cursosNotas[nombreCurso].push_back(nota);
+    
+    /*
+     * Este método agrega una nueva nota al vector de calificaciones para el curso especificado.
+     * Características importantes:
+     * 1. Permite múltiples calificaciones para un mismo curso
+     * 2. Si el estudiante se desinscribe del curso, las notas se conservan en este mapa
+     * 3. Todas las notas se consideran para el cálculo del promedio general
+     */
 }
 
 float Estudiante::calcularPromedio() const {
@@ -21,11 +30,22 @@ float Estudiante::calcularPromedio() const {
     }
 
     float sumaNotas = 0.0f;
+    int cantidadNotas = 0;
+    
+    // Recorrer todos los cursos y sumar todas las notas.d
     for (const auto& par : cursosNotas) {
-        sumaNotas += par.second; // .second toma la nota (nuestros map almacena pares clave-valor, por lo que .first es el nombre del curso y .second es la nota)
+        for (const auto& nota : par.second) {
+            sumaNotas += nota;
+            cantidadNotas++;
+        }
     }
     
-    return sumaNotas / cursosNotas.size();
+    // Si no hay notas, devolvemos 0
+    if (cantidadNotas == 0) {
+        return 0.0f;
+    }
+    
+    return sumaNotas / cantidadNotas;
 }
 
 // Implementación de la clase Curso
@@ -79,6 +99,20 @@ bool Curso::desinscribirEstudiante(int legajo) {
         */
 
         if ((*it)->getLegajo() == legajo) {
+            /*
+             * NOTA IMPORTANTE SOBRE LAS CALIFICACIONES:
+             * Cuando un estudiante se desinscribe de un curso, sus calificaciones para ese curso
+             * se mantienen en su historial (en el map<string, vector<float>> cursosNotas).
+             * 
+             * Esto es intencional y se alinea con el comportamiento de sistemas académicos reales:
+             * 1. El historial académico debe preservarse incluso si el estudiante abandona el curso
+             * 2. Las notas siguen siendo relevantes para el cálculo del promedio general
+             * 3. Permite mantener un registro completo del desempeño académico
+             * 
+             * Si se desea eliminar las calificaciones al desinscribirse, sería necesario implementar
+             * un método adicional en la clase Estudiante para eliminar las notas de un curso específico. Pero 
+             * esto no se solicita en el enunciado.
+             */
             estudiantes.erase(it);
             return true;
         }
@@ -425,6 +459,7 @@ int interaccion() {
                         break;
                     }
                     
+                    // Usamos el nombre del curso como clave única
                     estudianteEncontrado->agregarCursoNota(cursosDisponibles[indiceCurso - 1]->getNombre(), nota);
                     cout << "Nota asignada correctamente.\n";
                 }

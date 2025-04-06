@@ -128,10 +128,10 @@ void testSistemaBancario() {
     // PARTE 1: Creación de cuentas
     std::cout << "\n===== CREACIÓN DE CUENTAS =====" << std::endl;
     CajaDeAhorro caja("Juan Pérez", 1000);
-    std::cout << "✓ Caja de Ahorro creada para " << caja.getTitular() << " con $" << caja.getBalance() << std::endl;
+    std::cout << "- Caja de Ahorro creada para " << caja.getTitular() << " con $" << caja.getBalance() << std::endl;
     
     CuentaCorriente corriente("Juan Pérez", caja, 500);
-    std::cout << "✓ Cuenta Corriente creada para " << corriente.getTitular() << " con $" << corriente.getBalance() << std::endl;
+    std::cout << "- Cuenta Corriente creada para " << corriente.getTitular() << " con $" << corriente.getBalance() << std::endl;
     
     // PARTE 2: Operaciones básicas
     std::cout << "\n===== OPERACIONES BÁSICAS =====" << std::endl;
